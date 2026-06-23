@@ -1,9 +1,13 @@
 import express from "express";
 import multer from "multer";
 import cors from "cors";
+import dotenv from "dotenv";
 
 const app = express();
 
+dotenv.config();
+
+const PORT = process.env.PORT;
 app.use(cors());
 app.use(express.json());
 
@@ -61,6 +65,6 @@ app.get("/",(req,res) => {
 });
 
 
-app.listen(3000,() => {
-    console.log("Server running on 3000");
+app.listen(PORT,() => {
+    console.log(`Server running on ${PORT}`);
 });

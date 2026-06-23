@@ -7,8 +7,9 @@ function App() {
 
   return (
     <>
-      <h1>Aamchi MUMBAI</h1>
-      <button onClick={() => navigate("/community-mode")} >Community Mode</button>
+      <h1>Aamchi</h1>
+      <h1>Mumbai</h1>
+      <button onClick={() => navigate("/play")} ><h2>Play</h2></button>
       <button onClick={() => navigate("/create-post")} >Upload Image</button>
 
     </>
