@@ -9,6 +9,7 @@ import './index.css'
 import Play from './Play'
 import Streetview from './Streetview'
 import Login from './Login'
+import Signup from './Signup'
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
@@ -19,6 +20,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Route path = "/street-view" element={<Streetview/>}/>
       <Route path = "/play" element={<Play/>}/>
       <Route path = "/login" element={<Login/>}/>
+      <Route path = "/sign-up" element={<Signup/>}/>
     </Routes>
   </BrowserRouter>
 )

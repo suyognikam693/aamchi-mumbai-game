@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from "axios";
+import { Camera,ArrowLeft } from 'lucide-react';
+
 
 function CreatePost(){
   const navigate = useNavigate();
@@ -56,7 +58,7 @@ function CreatePost(){
       <button onClick={uploadImage}>
         Upload
       </button>
-      <button onClick={() => navigate("/")} >Back to home</button>
+      <ArrowLeft onClick={() => navigate("/")} className="back-btn" size={24}/>
     </>
   );
 }

@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 *{
     margin: 0px;
     padding: 0px;
@@ -6,7 +8,7 @@
 
 body{
     margin: 0px;
-    background-image: url('/sealink2.jpg');
+    background-image: url('/marine.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -46,6 +48,43 @@ body{
 }
 
 .camera-btn:hover{
+  transform: scale(1.08);
+  background: rgba(255,255,255,0.18);
+}
+
+.back-btn{
+  position: fixed;
+  top: 30px;
+  left: 30px;
+
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 28px;
+  color: white;
+
+  background :rgba(255,255,255,0.12);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+
+  border: 1px solid rgba(255,255,255,0.25);
+
+  box-shadow: 
+    0 8px 32px rgba(0,0,0,0.25),
+    inset 0 1px 1px rgba(255,255,255,0.4),
+    inset 0 -2px 8px rgba(255,255,255,0.1);
+
+  cursor: pointer;
+  transition: all 0.25s ease;  
+}
+
+.back-btn:hover{
   transform: scale(1.08);
   background: rgba(255,255,255,0.18);
 }
@@ -131,11 +170,57 @@ input{
 }
 
 button{
-  background: linear-gradient(90deg,#ddd,#dda);
   border: none;
   color: white;
   padding: 14px;
   border-radius: 30px;
-  font-size: 17px;
   cursor: pointer;
+}
+button:hover{
+  transform: scale(1.08);
+}
+.center{
+  text-align: center;
+}
+.aamchi{
+  padding-top: 30px;
+  color: red;
+  cursor: pointer;
+}
+.mumbai{
+  color: white;
+  cursor: pointer;
+}
+.mode-container{
+  display: flex;
+  justify-content: space-around;
+}
+.gamecard{
+  margin-top: 100px;
+  width:600px;
+  height: 600px;
+  background: white;
+  border-radius: 22px;
+  padding: 35px;
+  background :rgba(255,255,255,0.10);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+
+  border: 1px solid rgba(255,255,255,0.25);
+
+  box-shadow: 
+    0 8px 32px rgba(0,0,0,0.25),
+    inset 0 1px 1px rgba(255,255,255,0.4),
+    inset 0 -2px 8px rgba(255,255,255,0.1);
+  transition: all 0.25s ease;
+}
+
+.gamecard:hover{
+  transform: scale(1.05);
+}
+
+.playing{
+  padding: 200px;
+  display: flex;
+  flex-direction: column;
 }

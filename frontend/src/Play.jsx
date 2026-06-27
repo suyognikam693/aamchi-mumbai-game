@@ -1,16 +1,25 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import CommunityMode from './CommunityMode';
+import { Camera,ArrowLeft } from 'lucide-react';
+
 
 function Play() {
   const navigate = useNavigate();
 
   return (
     <>
-      <button onClick={() => navigate("/")} >Back to home</button>
-      <h1>Play</h1>
-      <button onClick={() => navigate("/street-view")} >Streetview</button>
-      <button onClick={() => navigate("/community-mode")} >Community Mode</button>
+      <ArrowLeft onClick={() => navigate("/")} className="back-btn" size={24}/>
+      <div className="mode-container">
+        <div className="gamecard">
+          <h2>StreetView</h2>
+          <button onClick={() => navigate("/street-view")} >Streetview</button>
+        </div>
+        <div className="gamecard">
+          <h2>Community Mode</h2>
+          <button onClick={() => navigate("/community-mode")} >Community Mode</button>
+        </div>
+      </div>
 
     </>
   )

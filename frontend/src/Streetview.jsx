@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import CommunityMode from './CommunityMode';
+import { Camera,ArrowLeft } from 'lucide-react';
+
 
 function Streetview() {
   const navigate = useNavigate();
@@ -8,7 +10,7 @@ function Streetview() {
   return (
     <>
       <h1>Street View</h1>
-      <button onClick={() => navigate("/")} >Back to home</button>
+      <ArrowLeft onClick={() => navigate("/")} className="back-btn" size={24}/>
 
     </>
   )
