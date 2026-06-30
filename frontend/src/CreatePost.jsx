@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from "axios";
 import { Camera,ArrowLeft } from 'lucide-react';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 function CreatePost(){
@@ -31,10 +33,10 @@ function CreatePost(){
           formData
         );
         console.log(res.data);
-        alert("Upload Successfull");
+        toast.success("Photo Uploaded");
       } catch (error) {
         console.log(error);
-        alert("Upload Failed");
+        toast.error("Upload Failed");
       }
     },
     (error) => {
@@ -50,6 +52,7 @@ function CreatePost(){
 
   return (
     <>
+      <ToastContainer/>
       <input
         type="file"
         onChange={(e) => setFile(e.target.files[0])}

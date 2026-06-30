@@ -1,21 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
 @import "tailwindcss";
 
-*{
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-}
 
 body{
-    margin: 0px;
-    background-image: url('/marine.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 100vh;
+    background-color: #FFD7A3;
+    height: 100vh;
+}
+.navbar{
+    height:70px;
+
+    display:flex;
+    justify-content:space-evenly;
+    align-items:center;
+}
+hr,h2,h1{
+  color: #FF9801;
+}
+.main{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+h1,h2{
+  font-family: 'Alfa Slab One',serif;
+}
+h1{
+  font-size: 100px;
+}
+.title{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 600px;
+}
+.hero{
+    max-width:1300px;
+    margin:auto;
+    min-height:85vh;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:0 40px;
 }
 
-.camera-btn{
+.hero-left{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.hero-left h1{
+    font-size:96px;
+    line-height:0.9;
+}
+
+.hero-left p{
+    color:white;
+    font-size:34px;
+    font-family:'Alfa Slab One';
+}
+.hero-right{
+    position:relative;
+
+    width:600px;
+    height:600px;
+}
+.circle{
+    position:absolute;
+
+    width:400px;
+    height:400px;
+
+    background:#FF9801;
+    border-radius:50%;
+
+    top:60px;
+    left:120px;
+}
+.monument{
+    position:absolute;
+
+    width:520px;
+
+    bottom:140px;
+    left:120px;
+
+    z-index:5;
+}
+.cloud{
+    position:absolute;
+    animation: floatCloud 20s ease-in-out infinite alternate;
+    will-change: transform;
+}
+
+.cloud1{
+    width:220px;
+    top:90px;
+    left:10px;
+    z-index:6;
+    animation-duration:22s;
+}
+
+.cloud2{
+    width:180px;
+    top:140px;
+    right:50px;
+    z-index:6;
+    animation-duration:28s;
+    animation-delay:-8s;
+}
+@keyframes floatCloud{
+    0%{
+        transform: translate(0,0);
+    }
+    50%{
+        transform: translate(40px,-6px);
+    }
+    100%{
+        transform: translate(80px,3px);
+    }
+}
+.play-btn,.login-btn{
+    width:250px;
+    height:60px;
+
+    background:#FF9801;
+    color:white;
+
+    border:none;
+    border-radius:8px;
+
+    font-size:30px;
+    font-family:'Alfa Slab One';
+
+    cursor:pointer;
+}
+.login-btn{
+  width: 150px;
+  height: 40px;
+  font-size: 15px;
+  align-items: center;
+}
+
+.inside{
+  position: relative;
+  left: 200px;
+  top: 100px;
+  width: 600px;
+}
+.logo-div{
+  display: flex;
+  flex-direction: column;
+}
+
+.camera-btn {
   position: fixed;
   bottom: 30px;
   right: 30px;
@@ -89,44 +229,8 @@ body{
   background: rgba(255,255,255,0.18);
 }
 
-/*.particles {
-  position: fixed;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: -1;
-}
 
-.particles span {
-  position: absolute;
-  width: 3px;
-  height: 3px;
-  background: white;
-  border-radius: 50%;
-  opacity: 0.5;
 
-  animation: flow linear infinite;
-}
-
-@keyframes flow {
-  from {
-    transform: translateX(-20vw);
-    opacity: 0;
-  }
-
-  10% {
-    opacity: 0.6;
-  }
-
-  90% {
-    opacity: 0.6;
-  }
-
-  to {
-    transform: translateX(120vw);
-    opacity: 0;
-  }
-}*/
 
 .logo{
   width: 350px;
@@ -171,7 +275,7 @@ input{
 
 button{
   border: none;
-  color: white;
+  color: pink;
   padding: 14px;
   border-radius: 30px;
   cursor: pointer;
@@ -179,18 +283,7 @@ button{
 button:hover{
   transform: scale(1.08);
 }
-.center{
-  text-align: center;
-}
-.aamchi{
-  padding-top: 30px;
-  color: red;
-  cursor: pointer;
-}
-.mumbai{
-  color: white;
-  cursor: pointer;
-}
+
 .mode-container{
   display: flex;
   justify-content: space-around;
@@ -198,7 +291,7 @@ button:hover{
 .gamecard{
   margin-top: 100px;
   width:600px;
-  height: 600px;
+  height: 450px;
   background: white;
   border-radius: 22px;
   padding: 35px;
@@ -220,7 +313,7 @@ button:hover{
 }
 
 .playing{
-  padding: 200px;
+  padding: 100px;
   display: flex;
   flex-direction: column;
 }

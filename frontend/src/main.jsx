@@ -1,26 +1,14 @@
-import { StrictMode } from 'react'
 import React from 'react'
 import ReactDOM from "react-dom/client"
+import { AuthProvider } from './contexts/AuthContext'
 import { BrowserRouter,Route,Routes } from 'react-router-dom'
-import App from "./App"
-import CreatePost from "./CreatePost";
-import CommunityMode from './CommunityMode'
-import './index.css'
-import Play from './Play'
-import Streetview from './Streetview'
-import Login from './Login'
-import Signup from './Signup'
+import App from './App'
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
-    <Routes>
-      <Route path = "/" element={<App/>}/>
-      <Route path = "/create-post" element={<CreatePost/>}/>
-      <Route path = "/community-mode" element={<CommunityMode/>}/>
-      <Route path = "/street-view" element={<Streetview/>}/>
-      <Route path = "/play" element={<Play/>}/>
-      <Route path = "/login" element={<Login/>}/>
-      <Route path = "/sign-up" element={<Signup/>}/>
-    </Routes>
+    <AuthProvider>
+      <App/>
+    </AuthProvider>
+    
   </BrowserRouter>
 )

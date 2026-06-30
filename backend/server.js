@@ -3,6 +3,8 @@ import multer from "multer";
 import cors from "cors";
 import dotenv from "dotenv";
 
+import authRoutes from './routes/authRoutes.js';
+
 const app = express();
 
 dotenv.config();
@@ -59,6 +61,8 @@ app.get("/community-mode/:index",(req,res) => {
     }
     res.json(posts[index]);
 })
+
+app.use('/api/auth',authRoutes);
 
 app.get("/",(req,res) => {
     res.send("Ganpati Bappa Morya");
