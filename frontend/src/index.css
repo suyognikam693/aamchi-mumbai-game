@@ -21,8 +21,9 @@ hr,h2,h1{
   flex-direction: row;
   justify-content: space-around;
 }
-h1,h2{
+h1,h2,.tabs{
   font-family: 'Alfa Slab One',serif;
+    color: #FF9801;
 }
 h1{
   font-size: 100px;
@@ -316,4 +317,188 @@ button:hover{
   padding: 100px;
   display: flex;
   flex-direction: column;
+}
+
+/* CommunityMode Layout */
+.community-wrapper {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: #000;
+}
+
+.community-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.back-btn {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 14px;
+    cursor: pointer;
+    font-size: 14px;
+    z-index: 1000;
+}
+
+.back-btn:hover {
+    background: rgba(0, 0, 0, 0.85);
+}
+
+/* CommunityMode Layout */
+.community-wrapper {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: #000;
+}
+
+.community-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.back-btn {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 14px;
+    cursor: pointer;
+    font-size: 14px;
+    z-index: 1000;
+}
+
+.back-btn:hover {
+    background: rgba(0, 0, 0, 0.85);
+}
+
+/* Mini Map */
+.minimap-wrapper {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    width: 280px;
+    height: 220px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    transition: all 0.45s ease;
+}
+
+.minimap-wrapper:hover {
+    transform: scale(1.1);
+    transform-origin: bottom right;
+}
+
+.minimap {
+    width: 100%;
+    height: 100%;
+}
+
+/* Fullscreen Reveal */
+.fullscreen-map {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    z-index: 2000;
+}
+
+.fullscreen-map .minimap {
+    width: 100%;
+    height: 100%;
+}
+
+.fullscreen-map:hover {
+    transform: none;
+}
+
+/* Guess Button */
+.guess-btn {
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+
+    padding: 12px;
+    background: #f97316;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+
+    z-index: 1000;
+}
+
+.guess-btn:hover {
+    background: #ea6c0a;
+}
+
+.guess-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+/* Result Overlay */
+.result-overlay {
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    width: 100%;
+    height: 20%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 24px 36px;
+    text-align: center;
+    z-index: 3000;
+    backdrop-filter: blur(6px);
+}
+
+.result-overlay h2 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.result-overlay p {
+    margin: 8px 0 16px;
+    font-size: 16px;
+}
+
+.next-btn {
+    padding: 10px 28px;
+    background: #22c55e;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.next-btn:hover {
+    background: #16a34a;
+}
+
+/* Loading */
+.community-loading {
+    color: #fff;
+    text-align: center;
+    margin-top: 40vh;
 }

@@ -29,9 +29,9 @@ function CreatePost(){
 
       try {
         const res = await axios.post(
-          "http://192.168.29.91:3000/create-post",
-          formData
-        );
+          "http://192.168.29.91:3000/api/community/post",
+          formData,{ headers:{Authorization: `Bearer ${localStorage.getItem('aamchi_mumbai_token')}`}
+        });
         console.log(res.data);
         toast.success("Photo Uploaded");
       } catch (error) {

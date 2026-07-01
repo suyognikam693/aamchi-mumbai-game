@@ -15,10 +15,18 @@ function Home() {
     <>
       <nav className="navbar">
         <h2>Home</h2>
-        <h2>StreetView</h2>
-        <h2>Community</h2>
-        <h2>Friends</h2>
-        <h2>Settings</h2>
+        <button className="tabs" onClick={()=>navigate("/street-view")}>
+            StreetView
+        </button>
+        <button className="tabs" onClick={()=>navigate("/community-mode")}>
+            Community
+        </button>
+        <button className="tabs" onClick={()=>navigate("/friends")}>
+            Friends
+        </button>
+        <button className="tabs" onClick={()=>navigate("/settings")}>
+            Settings
+        </button>
           {user?(
             <>
               <span>{user.name}</span>

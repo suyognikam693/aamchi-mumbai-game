@@ -5,3 +5,12 @@ CREATE TABLE IF NOT EXISTS users(
     password_hash TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT NOW()
 );
+
+CREATE TABLE posts(
+    id SERIAL PRIMARY KEY,
+    image_url TEXT NOT NULL,
+    lat NUMERIC NOT NULL,
+    lng NUMERIC NOT NULL,
+    user_id INT REFERENCES users(id),
+    created_at TIMESTAMP DEFAULT now()
+);
