@@ -16,7 +16,9 @@ function Home() {
   return (
     <>
       <nav className="navbar">
-        <span><h2>{user?.name?.toUpperCase() || "GUEST"}</h2></span>
+        <h2>
+          {user?.name ? user.name.toUpperCase() : "WELCOME GUEST"}
+        </h2>
         <div className="desktop-nav">
           <button className="tabs" onClick={()=>navigate("/street-view")}>StreetView</button>
           <button className="tabs" onClick={()=>navigate("/community-mode")}>Community</button>
@@ -38,10 +40,13 @@ function Home() {
         </button>
           
       </nav>
-      
+       
       {menuOpen && (
+        
         <div className="mobile-menu">
-          <span>{user.name}</span>
+                <h2>
+                {user?.name ? user.name.toUpperCase() : "WELCOME GUEST"}
+              </h2>  
           <button className="tabs" onClick={()=>navigate("/street-view")}>StreetView</button>
           <button className="tabs" onClick={()=>navigate("/community-mode")}>Community</button>
           <button className="tabs" onClick={()=>navigate("/friends")}>Friends</button>
