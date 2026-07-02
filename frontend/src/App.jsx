@@ -11,6 +11,7 @@ import Login from './Login'
 import Signup from './Signup'
 import Home from './Home'
 import Friends from './Friends';
+import Setting from './Setting';
 
 
 
@@ -26,6 +27,7 @@ function App() {
           <Route path = "/login" element={<Login/>}/>
           <Route path = "/sign-up" element={<Signup/>}/>
           <Route path = "/friends" element={<Friends/>}/>
+          <Route path = "/settings" element={<Setting/>}/>
         </Routes>
         
 
