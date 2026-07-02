@@ -4,8 +4,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 
 import authRoutes from './routes/authRoutes.js';
-import round from './routes/round.js'
-import communityRoutes from './routes/communityRoutes.js'
+import round from './routes/round.js';
+import communityRoutes from './routes/communityRoutes.js';
 
 const app = express();
 

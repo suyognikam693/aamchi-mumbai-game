@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useAuth } from './contexts/AuthContext'
+import { useAuth } from './contexts/AuthContext';
+import { GoogleLogin } from "@react-oauth/google";
+import axios from "axios";
 function Login(){
-    const {login} = useAuth();
+    const {login,googleLogin} = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
     const [email,setEmail] = useState('');
@@ -25,6 +27,15 @@ function Login(){
         }
     }
 
+    async function handleGoogleLogin(response) {
+        try {
+            await googleLogin(response.credential);
+            navigate(redirectTo);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <div className="auth-page"> Nothing for now
             <div className="right">
@@ -40,6 +51,9 @@ function Login(){
                         <p className="swtich">Dont have an account?{" "}
                             <button onClick={() => navigate("/sign-up")} >Sign up</button>
                         </p>
+                        <GoogleLogin
+                        onSuccess={handleGoogleLogin}
+                        onError={()=>console.log("Login Failed")}/>
                     </form>
                     <button onClick={() => navigate("/")} >Back to home</button>
 

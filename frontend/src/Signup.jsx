@@ -1,6 +1,8 @@
 import {useState} from 'react'
 import { useLocation, useNavigate } from "react-router-dom";
-import { useAuth } from './contexts/AuthContext'
+import { useAuth } from './contexts/AuthContext';
+import { GoogleLogin } from "@react-oauth/google";
+
 function Signup(){
     const {register} = useAuth();
     const navigate = useNavigate();
@@ -28,6 +30,21 @@ function Signup(){
             setLoading(false);
         }
     }
+
+    async function handleGoogleLogin(response) {
+        try {
+            const res = await axios.post(
+                "http://localhost:3000/api/auth/google",
+                {
+                    credential: response.credential,
+                }
+            );
+            localStorage.setItem("aamchi_mumbai_token",res.data.token);
+            navigate(redirectTo);
+        } catch (error) {
+            console.log(error);
+        }
+    }
     return(
         <div className="auth-page">
             <div className="right">
@@ -48,7 +65,9 @@ function Signup(){
                         <input type="password" placeholder="Confirm Password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required
                         />
                         <button type='submit' disabled={loading}>{loading?"Creating account...":"Create Account"}</button>
-                        
+                        <GoogleLogin
+                        onSuccess={handleGoogleLogin}
+                        onError={()=>console.log("Login Failed")}/>
                     </form>
                     <p className="swtich">Already have an account?{" "}
                             <button onClick={() => navigate("/login")} >Login</button>

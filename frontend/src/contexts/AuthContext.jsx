@@ -41,6 +41,16 @@ export function AuthProvider({children}){
         setUser(res.data.user);
     }
 
+    async function googleLogin(credential) {
+        const res = await api.post("/auth/google",{
+            credential,
+        });
+
+        localStorage.setItem("aamchi_mumbai_token",res.data.token);
+        setToken(res.data.token);
+        setUser(res.data.user);
+    }
+
     async function register(name, email, password){
         const res = await api.post("/auth/register",{
             name,
@@ -59,7 +69,7 @@ export function AuthProvider({children}){
     }
     return (
         <AuthContext.Provider
-            value={{user,token,loading,login,register,logout}}
+            value={{user,token,loading,login,googleLogin,register,logout}}
         >
             {children}
         </AuthContext.Provider>

@@ -8,9 +8,9 @@ body{
 }
 .navbar{
     height:70px;
-
+    padding: 0 40px;
     display:flex;
-    justify-content:space-evenly;
+    justify-content:space-between;
     align-items:center;
 }
 hr,h2,h1{
@@ -501,4 +501,161 @@ button:hover{
     color: #fff;
     text-align: center;
     margin-top: 40vh;
+}
+
+.desktop-nav{
+    display:flex;
+    justify-content:space-evenly;
+    align-items:center;
+    width:100%;
+}
+
+.hamburger{
+    display:none;
+    background:none;
+    color:#D68100;
+    padding:0;
+}
+
+.mobile-logo{
+    display:none;
+}
+
+.mobile-menu{
+    display:none;
+}
+
+@media (max-width:768px){
+
+.navbar{
+    height:85px;
+    padding:0 40px;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+}
+
+.desktop-nav{
+    display:none;
+}
+
+.mobile-logo{
+    display:block;
+    font-size:52px;
+    margin:0;
+}
+
+.hamburger{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.mobile-menu{
+
+    display:flex;
+    flex-direction:column;
+
+    position:absolute;
+    top:86px;
+    left:0;
+
+    width:100%;
+    background:#FFD7A3;
+
+    border-top:1px solid rgba(0,0,0,.08);
+
+    z-index:500;
+
+    animation:slideDown .25s ease;
+}
+
+.mobile-menu button{
+
+    padding:20px;
+    font-size:22px;
+    background:none;
+    color:#D68100;
+    font-family:'Alfa Slab One';
+}
+
+.mobile-menu button:hover{
+    transform:none;
+    background:#ffc87b;
+}
+}
+
+@keyframes slideDown{
+
+from{
+    opacity:0;
+    transform:translateY(-20px);
+}
+
+to{
+    opacity:1;
+    transform:translateY(0);
+}
+
+}
+
+@media(max-width:768px){
+
+.hero{
+    display: flex;
+    flex-direction:column;
+    text-align:center;
+    padding:20px;
+}
+
+.hero-left{
+    order:1;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+
+.hero-right{
+    order:2;
+    width:100%;
+    height:550px;
+}
+.play-mobile{
+    order: 3;
+    margin-top: 30px;
+}
+.hero-left h1{
+    font-size:80px;
+}
+
+.hero-left p{
+    font-size:26px;
+}
+
+.circle{
+    width:340px;
+    height:340px;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+.monument{
+    width:420px;
+    left:50%;
+    transform:translateX(-50%);
+    bottom:40px;
+}
+
+.cloud1{
+    left:0;
+}
+
+.cloud2{
+    right:0;
+}
+
+.play-btn{
+    width:260px;
+}
+
 }

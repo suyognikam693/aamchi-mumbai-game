@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "./contexts/AuthContext";
-import { Camera } from "lucide-react";
+import { Menu,X,Camera } from "lucide-react";
+import { useState } from "react";
 
 function Home() {
+  const [menuOpen,setMenuOpen] = useState(false);
   const {user,logout} = useAuth();
   const navigate = useNavigate();
   function handleLogout(){
@@ -14,22 +16,14 @@ function Home() {
   return (
     <>
       <nav className="navbar">
-        <h2>Home</h2>
-        <button className="tabs" onClick={()=>navigate("/street-view")}>
-            StreetView
-        </button>
-        <button className="tabs" onClick={()=>navigate("/community-mode")}>
-            Community
-        </button>
-        <button className="tabs" onClick={()=>navigate("/friends")}>
-            Friends
-        </button>
-        <button className="tabs" onClick={()=>navigate("/settings")}>
-            Settings
-        </button>
+        <span><h2>{user?.name?.toUpperCase() || "GUEST"}</h2></span>
+        <div className="desktop-nav">
+          <button className="tabs" onClick={()=>navigate("/street-view")}>StreetView</button>
+          <button className="tabs" onClick={()=>navigate("/community-mode")}>Community</button>
+          <button className="tabs" onClick={()=>navigate("/friends")}>Friends</button>
+          <button className="tabs" onClick={()=>navigate("/settings")}>Settings</button>
           {user?(
             <>
-              <span>{user.name}</span>
               <button onClick={handleLogout}>Logout</button>
             </>
           ):(
@@ -37,7 +31,34 @@ function Home() {
               Login
               </button>
           )}
+        </div>
+
+        <button className="hamburger" onClick={()=>setMenuOpen(!menuOpen)}>
+          {menuOpen?<X size={36}/> : <Menu size={36}/>}
+        </button>
+          
       </nav>
+      
+      {menuOpen && (
+        <div className="mobile-menu">
+          <span>{user.name}</span>
+          <button className="tabs" onClick={()=>navigate("/street-view")}>StreetView</button>
+          <button className="tabs" onClick={()=>navigate("/community-mode")}>Community</button>
+          <button className="tabs" onClick={()=>navigate("/friends")}>Friends</button>
+          <button className="tabs" onClick={()=>navigate("/settings")}>Settings</button>
+          {user?(
+            <>
+              
+              <button onClick={handleLogout}>Logout</button>
+            </>
+          ):(
+            <button onClick={()=>navigate("/login")}>
+              Login
+              </button>
+          )}
+        </div>
+      )}
+
 
       <hr />
 
@@ -54,7 +75,7 @@ function Home() {
           <p>Every street has a story</p>
 
           <button
-            className="play-btn"
+            className="play-btn play-mobile"
             onClick={() => navigate("/play")}
           >
             Play Now

@@ -1,6 +1,56 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import pool from '../models/db.js';
+import { OAuth2Client } from "google-auth-library";
+
+const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
+
+export async function googleLogin(req,res) {
+    try {
+        const { credential } = req.body;
+
+        const ticket = await client.verifyIdToken({
+            idToken: credential,
+            audience: process.env.GOOGLE_CLIENT_ID,
+        });
+
+        const payload = ticket.getPayload();
+
+        const {email,name} = payload;
+
+        let user = await pool.query(
+            "SELECT * FROM users WHERE email=$1",
+            [email]
+        );
+
+        if(user.rows.length === 0){
+            user = await pool.query(
+                `INSERT INTO users(name,email,password_hash,auth_provider)
+                VALUES($1,$2,NULL,'google')
+                RETURNING *`,
+                [name,email]
+            );
+        }
+
+        const token = jwt.sign(
+            {id : user.rows[0].id},
+            process.env.JWT_SECRET,
+            {
+                expiresIn: "7d",
+            }
+        );
+        res.json({
+            token,
+            user:user.rows[0],
+        });
+    } catch (error) {
+        console.error(error);
+
+        res.status(401).json({
+            error: "Invalid google token",
+        });
+    }
+}
 
 function signToken(user){
     return jwt.sign(
@@ -21,7 +71,11 @@ export async function register(req,res){
         }
         const existing = await pool.query('SELECT id FROM users WHERE email = $1', [email.toLowerCase()]);
         if(existing.rows.length > 0){
-            return res.status(409).json({error: 'Saale email is already in use'});
+            return res.status(409).json({error: 'Email is already in use'});
+        }
+        const existingname = await pool.query('SELECT id FROM users WHERE name = $1', [name.toLowerCase()]);
+        if(existingname.rows.length > 0){
+            return res.status(409).json({error: 'Username is already in use'});
         }
         const passwordHash = await bcrypt.hash(password,10);
         const result = await pool.query(

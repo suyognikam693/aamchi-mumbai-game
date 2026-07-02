@@ -19,7 +19,7 @@ async function findUnseenPano(userId) {
             params:{
                 access_token:TOKEN,
                 fields: 'id,computed_geometry,is_pano',
-                bbox:`${lng - 0.05},${lat - 0.05},${lng + 0.05},${lat + 0.05}`,
+                bbox:`${lng - 0.005},${lat - 0.005},${lng + 0.005},${lat + 0.005}`,
                 limit:50,
                 is_pano:true,
             },
@@ -31,11 +31,8 @@ async function findUnseenPano(userId) {
         }
         console.log("Mapillary response",JSON.stringify(res.data));
 
-
-        const images = res.data?.data || [];
-        if(!images.length) {console.log("No images, retrying ... ");continue;}
-        const img = images[Math.floor(Math.random() * images.length)];
-        if(!img) { console.log("No image found at this point");continue;}
+        const img = res.data?.data?.[0];
+        if(!img) continue;
 
         const seen = await redis.sIsMember(`user:${userId}:seen`,img.id);
         if(seen) continue;
