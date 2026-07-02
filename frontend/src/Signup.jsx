@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from './contexts/AuthContext';
 import { GoogleLogin } from "@react-oauth/google";
 import api from './services/api';
+import { googleLogin } from '../../backend/controllers/authController';
 
 function Signup(){
     const {register} = useAuth();
@@ -34,14 +35,8 @@ function Signup(){
 
     async function handleGoogleLogin(response) {
         try {
-            const res = await axios.post(
-                "/auth/google",
-                {
-                    credential: response.credential,
-                }
-            );
-            localStorage.setItem("aamchi_mumbai_token",res.data.token);
-            navigate(redirectTo);
+            await googleLogin(response.credential);
+                navigate("/");
         } catch (error) {
             console.log(error);
         }
