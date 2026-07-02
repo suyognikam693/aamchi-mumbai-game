@@ -2,7 +2,7 @@ import { useState } from "react";
 
 function Friends(){
     return (
-        <h1>Hello</h1>
+        <h1>Coming Soon</h1>
     )
 }
 

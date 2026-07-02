@@ -8,9 +8,7 @@ export function requireAuth(req,res,next){
     const token = header.split(' ')[1];
     try {
         const payload = jwt.verify(token, process.env.JWT_SECRET);
-        if(payload.role !== 'user'){
-            return res.status(403).json({error:'Forbidden'});
-        }
+
         req.user = payload;
         next();
     } catch (error) {

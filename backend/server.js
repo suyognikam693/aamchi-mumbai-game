@@ -4,9 +4,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 
 import authRoutes from './routes/authRoutes.js';
-import round from './routes/round.js';
 import communityRoutes from './routes/communityRoutes.js';
-
+import streetview from './routes/streetview.js';
 const app = express();
 
 dotenv.config();
@@ -17,8 +16,8 @@ app.use(express.json());
 
 
 app.use('/api/auth',authRoutes);
-app.use('/api/round',round);
 app.use('/api/community',communityRoutes);
+app.use("/api/streetview", streetview);
 
 app.get("/",(req,res) => {
     res.send("Ganpati Bappa Morya");
