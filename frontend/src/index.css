@@ -138,11 +138,16 @@ h1{
 
     cursor:pointer;
 }
-.login-btn{
+.login-btn {
   width: 150px;
   height: 40px;
   font-size: 15px;
   align-items: center;
+}
+.playing-btn {
+    width: 250px;
+    height: 40px;
+    font-size: 15px;
 }
 
 .inside{

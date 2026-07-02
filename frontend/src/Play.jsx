@@ -13,13 +13,15 @@ function Play() {
       <div className="mode-container">
         <div className="gamecard">
           <h2>StreetView</h2>
-          <img src="sealink.jpg" alt="streetview" />
-          <button onClick={() => navigate("/street-view")} >Streetview</button>
+          <h3>I am thinking to put something here give me some time</h3>
+          <br />
+          <button className='play-btn playing-btn' onClick={() => navigate("/street-view")} >Play Streetview</button>
         </div>
         <div className="gamecard">
           <h2>Community Mode</h2>
-          <img src="new.jpg" alt="streetview" />
-          <button onClick={() => navigate("/community-mode")} >Community Mode</button>
+            <h3>Same lame reason here</h3>
+            <br />
+          <button className='play-btn playing-btn' onClick={() => navigate("/community-mode")} >Play Community Mode</button>
         </div>
       </div>
 
