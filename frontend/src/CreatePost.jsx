@@ -28,10 +28,10 @@ function CreatePost(){
 
 
       try {
-        const res = await axios.post(
+        const res = await api.post(
           "/community/post",
-          formData,{ headers:{Authorization: `Bearer ${localStorage.getItem('aamchi_mumbai_token')}`}
-        });
+          formData
+        );
         console.log(res.data);
         toast.success("Photo Uploaded");
       } catch (error) {

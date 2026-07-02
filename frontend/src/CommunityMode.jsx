@@ -113,7 +113,7 @@ export default function CommunityMode() {
         setGuess(null);
         setResult(null);
 
-        const res = await axios.get(
+        const res = await api.get(
             `/community/post/${i}`
         );
 
