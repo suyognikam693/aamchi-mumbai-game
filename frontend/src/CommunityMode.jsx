@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "./services/api";
 import { useNavigate } from "react-router-dom";
 import {
     MapContainer,
@@ -114,7 +114,7 @@ export default function CommunityMode() {
         setResult(null);
 
         const res = await axios.get(
-            `http://192.168.29.91:3000/api/community/post/${i}`
+            `/community/post/${i}`
         );
 
         setPost(res.data);

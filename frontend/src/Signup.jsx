@@ -2,6 +2,7 @@ import {useState} from 'react'
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from './contexts/AuthContext';
 import { GoogleLogin } from "@react-oauth/google";
+import api from './services/api';
 
 function Signup(){
     const {register} = useAuth();
@@ -34,7 +35,7 @@ function Signup(){
     async function handleGoogleLogin(response) {
         try {
             const res = await axios.post(
-                "http://localhost:3000/api/auth/google",
+                "/auth/google",
                 {
                     credential: response.credential,
                 }

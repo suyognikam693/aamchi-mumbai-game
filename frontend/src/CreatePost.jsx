@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import axios from "axios";
+import { useNavigate } from 'react-router-dom';
+import api from './services/api';
 import { Camera,ArrowLeft } from 'lucide-react';
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -29,7 +29,7 @@ function CreatePost(){
 
       try {
         const res = await axios.post(
-          "http://192.168.29.91:3000/api/community/post",
+          "/community/post",
           formData,{ headers:{Authorization: `Bearer ${localStorage.getItem('aamchi_mumbai_token')}`}
         });
         console.log(res.data);
