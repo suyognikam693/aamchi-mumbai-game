@@ -10,6 +10,7 @@ import Streetview from './Streetview'
 import Login from './Login'
 import Signup from './Signup'
 import Home from './Home'
+import Friends from './Friends';
 
 
 
@@ -24,6 +25,7 @@ function App() {
           <Route path = "/play" element={<Play/>}/>
           <Route path = "/login" element={<Login/>}/>
           <Route path = "/sign-up" element={<Signup/>}/>
+          <Route path = "/friends" element={<Friends/>}/>
         </Routes>
         
 
